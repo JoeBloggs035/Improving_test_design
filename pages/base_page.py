@@ -1,5 +1,8 @@
+import time
+
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
@@ -29,10 +32,11 @@ class BasePage:
         alert.send_keys(answer)
         alert.accept()
         try:
-            WebDriverWait(self.browser, 10).until(EC.alert_is_present())
+            WebDriverWait(self.browser, 20).until(EC.alert_is_present())
             alert = self.browser.switch_to.alert
             alert_text = alert.text
+            # time.sleep(3)
             print(f"Your code: {alert_text}")
             alert.accept()
-        except NoAlertPresentException:
-            print("No second alert presented")
+        except (NoAlertPresentException, TimeoutException):
+            print("No second alert presented but most likely it's a TimeoutException")
