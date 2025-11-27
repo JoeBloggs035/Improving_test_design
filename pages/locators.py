@@ -7,11 +7,11 @@ class ProductPageLocators:
         ".btn.btn-lg.btn-primary.btn-add-to-basket",
     )
     PRODUCT_NAME = (By.CSS_SELECTOR, ".col-sm-6.product_main h1")
-    PRODUCT_ADDED_TO_BASKET = (
+    ADDED_PRODUCT_NAME = (
         By.CSS_SELECTOR,
         "#messages .alert-success:first-child strong",
     )
-    PRODUCT_ADDED_MESSAGE = (
+    SUCCESS_MESSAGE = (
         By.CSS_SELECTOR,
         "#messages .alert-success:first-child .alertinner",
     )
